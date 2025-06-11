@@ -2,15 +2,17 @@ package ca.cleaningdepot.tools.jasperreports
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.register
 import org.slf4j.LoggerFactory
 
 class JasperPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        val configuration = project.extensions.create("jasperreports", JasperPluginExtension::class.java)
+        val configuration = project.extensions.create<JasperPluginExtension>("jasperreports")
         if (configuration.verbose.get()) {
             logConfiguration(configuration)
         }
-        project.tasks.register("jasperreports", JasperTask::class.java)
+        project.tasks.register<JasperTask>("jasperreports")
     }
 
     private fun logConfiguration(configuration: JasperPluginExtension) {
