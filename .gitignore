@@ -4,5 +4,8 @@
 .project
 .settings/
 target/
+build/
 .idea
 *.iml
+.gradle/
+.kotlin/
