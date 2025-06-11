@@ -12,7 +12,7 @@ class JasperPlugin : Plugin<Project> {
         if (configuration.verbose.get()) {
             logConfiguration(configuration)
         }
-        project.tasks.register<JasperTask>("jasperreports")
+        project.tasks.register<JasperTask>("jasperreports") { this.configuration = configuration }
     }
 
     private fun logConfiguration(configuration: JasperPluginExtension) {
