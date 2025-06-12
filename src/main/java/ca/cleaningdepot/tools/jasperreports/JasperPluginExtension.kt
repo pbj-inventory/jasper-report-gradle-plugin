@@ -1,6 +1,7 @@
 package ca.cleaningdepot.tools.jasperreports
 
 import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.FileCollection
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.MapProperty
@@ -75,12 +76,6 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
     abstract val numberOfThreads: Property<Int>
 
     /**
-     *
-     */
-    @get:Input
-    abstract val classpathElements: ListProperty<String>
-
-    /**
      * Use this parameter to add additional properties to the Jasper compiler.
      * For example.
      *
@@ -137,7 +132,7 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
      *
      */
     @get:Input
-    abstract val additionalClasspath: Property<String>
+    abstract val additionalClasspath: Property<FileCollection>
 
     init {
         compiler.convention("net.sf.jasperreports.engine.design.JRJdtCompiler")

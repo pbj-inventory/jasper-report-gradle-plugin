@@ -17,17 +17,11 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.IOException
-import java.lang.String
-import java.net.URL
-import java.net.URLClassLoader
 import java.util.*
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
-import kotlin.Exception
-import kotlin.Throws
-import kotlin.require
 
 class JasperReportCompiler(private val configuration: JasperPluginExtension) {
     @Throws(Exception::class)
@@ -54,16 +48,8 @@ class JasperReportCompiler(private val configuration: JasperPluginExtension) {
             return
         }
 
-        val originalTCCL = Thread.currentThread().getContextClassLoader()
-        Thread.currentThread().setContextClassLoader(getClassLoader(originalTCCL))
-        try {
-            configureJasper()
-            executeTasks(tasks)
-        } finally {
-            if (originalTCCL != null) {
-                Thread.currentThread().setContextClassLoader(originalTCCL)
-            }
-        }
+        configureJasper()
+        executeTasks(tasks)
     }
 
     /**
@@ -122,7 +108,7 @@ class JasperReportCompiler(private val configuration: JasperPluginExtension) {
         val jrContext: DefaultJasperReportsContext = DefaultJasperReportsContext.getInstance()
 
         jrContext.setProperty(
-            JRReportSaxParserFactory.COMPILER_XML_VALIDATION, String.valueOf(configuration.xmlValidation.get())
+            JRReportSaxParserFactory.COMPILER_XML_VALIDATION, configuration.xmlValidation.get().toString()
         )
         jrContext.setProperty(
             JRCompiler.COMPILER_PREFIX + JRReport.LANGUAGE_JAVA,
@@ -135,41 +121,6 @@ class JasperReportCompiler(private val configuration: JasperPluginExtension) {
                 properties.setProperty(additionalProperty.key, additionalProperty.value)
             }
         }
-    }
-
-    @Throws(Exception::class)
-    private fun getClassLoader(classLoader: ClassLoader): ClassLoader {
-        val classpath = arrayListOf<URL>()
-        if (configuration.classpathElements.isPresent) {
-            for (element in configuration.classpathElements.get()) {
-                try {
-                    val f = File(element)
-                    classpath.add(f.toURI().toURL())
-                    LOGGER.debug("Added to classpath {}", element)
-                } catch (e: Exception) {
-                    throw Exception("Error setting classpath $element ${e.message}")
-                }
-            }
-        }
-
-        if (configuration.additionalClasspath.isPresent) {
-            for (element in configuration.additionalClasspath.get().split(";")) {
-                try {
-                    val f = File(element)
-                    classpath.add(f.toURI().toURL())
-                    LOGGER.debug("Added additionalClasspath to classpath {}", element)
-                } catch (e: Exception) {
-                    throw Exception("Error setting classpath " + element + " " + e.message)
-                }
-            }
-        }
-
-        if (classpath.isEmpty()) {
-            return classLoader
-        }
-
-        val urls = classpath.toTypedArray()
-        return URLClassLoader(urls, classLoader)
     }
 
     @Throws(Exception::class)
@@ -231,7 +182,9 @@ class JasperReportCompiler(private val configuration: JasperPluginExtension) {
     }
 
     private fun newThreadPool(): ExecutorService {
-        return Executors.newFixedThreadPool(configuration.numberOfThreads.get(), JasperReporterThreadFactory())
+        return Executors.newFixedThreadPool(
+            configuration.numberOfThreads.get(), JasperReporterThreadFactory(configuration)
+        )
     }
 
     @Throws(InterruptedException::class, ExecutionException::class)

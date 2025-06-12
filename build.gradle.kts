@@ -21,7 +21,6 @@ dependencies {
     api("net.sf.jasperreports:jasperreports-functions:6.21.4")
     api("org.mozilla:rhino:1.7.14")
     api("org.codehaus.plexus:plexus-compiler-api:2.13.0")
-    compileOnly("org.slf4j:slf4j-api:1.7.36")
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation(gradleTestKit())

@@ -25,7 +25,6 @@ class JasperPlugin : Plugin<Project> {
         LOGGER.info("XML Validation: {}", configuration.xmlValidation.orNull)
         LOGGER.info("JasperReports Compiler: {}", configuration.compiler.orNull)
         LOGGER.info("Number of threads: {}", configuration.numberOfThreads.orNull)
-        LOGGER.info("classpathElements: {}", configuration.classpathElements.orNull)
         LOGGER.info("Additional Classpath: {}", configuration.additionalClasspath.orNull)
         LOGGER.info("Source Scanner: {}", configuration.sourceScanner.orNull)
     }
