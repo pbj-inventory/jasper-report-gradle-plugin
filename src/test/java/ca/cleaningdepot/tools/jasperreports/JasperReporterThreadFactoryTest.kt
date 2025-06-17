@@ -1,5 +1,8 @@
 package ca.cleaningdepot.tools.jasperreports
 
+import org.gradle.api.Project
+import org.gradle.internal.impldep.org.apache.commons.compress.harmony.pack200.PackingUtils.config
+import org.gradle.testfixtures.ProjectBuilder
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.util.concurrent.Callable
@@ -10,9 +13,12 @@ internal class JasperReporterThreadFactoryTest {
     @Test
     @Throws(InterruptedException::class, ExecutionException::class)
     fun testThreadNumbering() {
+        val project = ProjectBuilder.builder().build()
+        project.pluginManager.apply("ca.cleaningdepot.tools.jasperreports-gradle-plugin")
         val tasks = arrayListOf(ThreadNameRetrieverTask(), ThreadNameRetrieverTask(), ThreadNameRetrieverTask())
 
-        val executorService = Executors.newFixedThreadPool(2, JasperReporterThreadFactory())
+        val config = project.extensions.getByType(JasperPluginExtension::class.java)
+        val executorService = Executors.newFixedThreadPool(2, JasperReporterThreadFactory(config))
         val output = executorService.invokeAll(tasks)
 
         Assertions.assertTrue(output[0].get()?.startsWith(JasperReporterThreadFactory.THREAD_PREFIX) ?: false)
