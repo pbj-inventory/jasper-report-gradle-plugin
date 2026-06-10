@@ -1,10 +1,8 @@
 package ca.cleaningdepot.tools.jasperreports
 
-import net.sf.jasperreports.engine.DefaultJasperReportsContext
 import net.sf.jasperreports.engine.JasperExportManager
 import net.sf.jasperreports.engine.JasperFillManager
 import net.sf.jasperreports.engine.util.NullOutputStream
-import org.codehaus.plexus.util.FileUtils
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.jupiter.api.Assertions
@@ -13,6 +11,10 @@ import org.junit.jupiter.api.Test
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.Path
+import kotlin.io.path.deleteRecursively
+import kotlin.io.path.listDirectoryEntries
 
 internal class JasperReportCompilerTest {
     @Test
@@ -38,8 +40,10 @@ internal class JasperReportCompilerTest {
         JasperReportCompiler(configuration).compileReports()
 
         Assertions.assertEquals(
-            configuration.sourceDirectory.toFile().listFiles().size,
-            configuration.outputDirectory.toFile().listFiles().size,
+            configuration.sourceDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.sourceFileExt.get()}").size,
+            configuration.outputDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.outputFileExt.get()}").size,
             "Files from sourcefolder do not correspond to files in the destinationFolder"
         )
         assertAllFilesAreCompiled(configuration.sourceDirectory.toFile(), configuration.outputDirectory.toFile())
@@ -53,24 +57,25 @@ internal class JasperReportCompilerTest {
         val configuration = project.getExtension()
         configuration.sourceDirectory.set(File("./build/resources/test/exampleFolders/sampleReports").absoluteFile)
         configuration.outputDirectory.set(File("./build/unitTestReports/testCompilerConfiguration").absoluteFile)
-        configuration.compiler.set(TestCompilerConfigurationCompiler::class.java.getName())
+        configuration.compiler.set(TestCompilerConfigurationCompiler::class.java.name)
 
         // when
-        JasperReportCompiler(configuration).compileReports()
+        val compiler = JasperReportCompiler(configuration)
+        compiler.compileReports()
 
         // then
         // test that a custom compiler works
         Assertions.assertEquals(
-            configuration.sourceDirectory.toFile().listFiles().size,
-            configuration.outputDirectory.toFile().listFiles().size,
+            configuration.sourceDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.sourceFileExt.get()}").size,
+            configuration.outputDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.outputFileExt.get()}").size,
             "Files from sourcefolder do not correspond to files in the destinationFolder"
         )
         assertAllFilesAreCompiled(
             configuration.sourceDirectory.toFile(), configuration.outputDirectory.toFile()
         )
-        Assertions.assertTrue(
-            DefaultJasperReportsContext.getInstance().getProperties().containsKey("testcompiler.called")
-        )
+        Assertions.assertTrue(compiler.context.properties.containsKey("testcompiler.called"))
 
         // given
         configuration.outputDirectory.set(File("./build/unitTestReports/testCompilerConfiguration2").absoluteFile)
@@ -90,8 +95,10 @@ internal class JasperReportCompilerTest {
         // then
         // test that a custom compiler works
         Assertions.assertEquals(
-            configuration.sourceDirectory.toFile().listFiles().size,
-            configuration.outputDirectory.toFile().listFiles().size,
+            configuration.sourceDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.sourceFileExt.get()}").size,
+            configuration.outputDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.outputFileExt.get()}").size,
             "Files from sourcefolder do not correspond to files in the destinationFolder"
         )
         assertAllFilesAreCompiled(configuration.sourceDirectory.toFile(), configuration.outputDirectory.toFile())
@@ -123,17 +130,18 @@ internal class JasperReportCompilerTest {
         configuration.additionalProperties.set(properties)
 
         // when
-        JasperReportCompiler(configuration).compileReports()
+        val compiler = JasperReportCompiler(configuration)
+        compiler.compileReports()
 
         // then
-        val defaultPdfFontName =
-            DefaultJasperReportsContext.getInstance().getProperty("net.sf.jasperreports.default.pdf.font.name")
-        val pdfEmbeddedValue =
-            DefaultJasperReportsContext.getInstance().getProperty("net.sf.jasperreports.default.pdf.embedded")
+        val defaultPdfFontName = compiler.context.getProperty("net.sf.jasperreports.default.pdf.font.name")
+        val pdfEmbeddedValue = compiler.context.getProperty("net.sf.jasperreports.default.pdf.embedded")
 
         Assertions.assertEquals(
-            configuration.sourceDirectory.toFile().listFiles().size,
-            configuration.outputDirectory.toFile().listFiles().size,
+            configuration.sourceDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.sourceFileExt.get()}").size,
+            configuration.outputDirectory.toFile().toPath()
+                .listDirectoryEntries("*${configuration.outputFileExt.get()}").size,
             "Files from sourcefolder do not correspond to files in the destinationFolder"
         )
         assertAllFilesAreCompiled(configuration.sourceDirectory.toFile(), configuration.outputDirectory.toFile())
@@ -141,7 +149,7 @@ internal class JasperReportCompilerTest {
         Assertions.assertEquals(
             "true", pdfEmbeddedValue, "net.sf.jasperreports.default.pdf.embedded has not been set properly"
         )
-        Assertions.assertTrue(configuration.outputDirectory.toFile().isDirectory(), "Destination is not a directory")
+        Assertions.assertTrue(configuration.outputDirectory.toFile().isDirectory, "Destination is not a directory")
         val testFiles = configuration.outputDirectory.toFile().listFiles { pathname ->
             pathname.toString().contains("PlainTextReportWithDefaultFontReport")
         }.toList()
@@ -164,26 +172,22 @@ internal class JasperReportCompilerTest {
      * also search all subfolders.
      */
     private fun assertAllFilesAreCompiled(sourceFolder: File, destinationFolder: File) {
-        Assertions.assertTrue(sourceFolder.isDirectory(), "Source folder is not a directory")
-        Assertions.assertTrue(destinationFolder.isDirectory(), "Destination is not a directory")
+        Assertions.assertTrue(sourceFolder.isDirectory, "Source folder is not a directory")
+        Assertions.assertTrue(destinationFolder.isDirectory, "Destination is not a directory")
         val filenames: MutableSet<String?> = HashSet()
         for (file in sourceFolder.listFiles()) {
-            if (file.isFile()) {
-                filenames.add(getNameWithoutSuffix(file, ".jrxml"))
+            if (file.isFile && file.name.endsWith(".jrxml")) {
+                filenames.add(file.name.removeSuffix(".jrxml"))
             }
         }
         for (file in destinationFolder.listFiles()) {
-            if (file.isFile()) {
-                filenames.remove(getNameWithoutSuffix(file, ".jasper"))
+            if (file.isFile && file.name.endsWith(".jasper")) {
+                filenames.remove(file.name.removeSuffix(".jasper"))
             }
         }
         Assertions.assertTrue(
             filenames.isEmpty(), "Files from sourcefolder do not correspond to files in the destinationFolder"
         )
-    }
-
-    private fun getNameWithoutSuffix(file: File, suffix: String): String {
-        return file.getName().substring(0, file.getName().indexOf(suffix))
     }
 
     /**
@@ -362,7 +366,7 @@ internal class JasperReportCompilerTest {
     private fun detectFolderStructure(folderToSearch: File): MutableSet<String?> {
         val set: MutableSet<String?> = HashSet()
         for (f in folderToSearch.listFiles()) {
-            if (f.isDirectory()) {
+            if (f.isDirectory) {
                 set.addAll(detectFolderStructure(f))
             } else {
                 set.add(f.absolutePath)
@@ -376,7 +380,8 @@ internal class JasperReportCompilerTest {
         @Throws(IOException::class)
         @JvmStatic
         fun beforeAll() {
-            FileUtils.deleteDirectory(File("build/unitTestReports"))
+            @OptIn(ExperimentalPathApi::class)//
+            Path("build/unitTestReports").deleteRecursively()
         }
     }
 }

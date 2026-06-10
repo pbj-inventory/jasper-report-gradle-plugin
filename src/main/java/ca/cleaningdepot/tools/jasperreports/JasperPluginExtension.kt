@@ -3,10 +3,9 @@ package ca.cleaningdepot.tools.jasperreports
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.FileCollection
 import org.gradle.api.file.ProjectLayout
-import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.MapProperty
 import org.gradle.api.provider.Property
-import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.*
 import java.io.File
 import javax.inject.Inject
 
@@ -20,13 +19,13 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
     /**
      * This is where the .jasper files are written.
      */
-    @get:Input
+    @get:OutputDirectory
     abstract val outputDirectory: DirectoryProperty
 
     /**
      * This is where the xml report design files should be.
      */
-    @get:Input
+    @get:InputDirectory
     abstract val sourceDirectory: DirectoryProperty
 
     /**
@@ -107,16 +106,6 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
     abstract val failOnMissingSourceDirectory: Property<Boolean>
 
     /**
-     * This is the source inclusion scanner class used, an
-     * <code>org.codehaus.plexus.compiler.util.scan.SourceInclusionScanner</code>
-     * implementation class. Currently only <code></code>org.codehaus.plexus.compiler.util.scan.SimpleSourceInclusionScanner</code>
-     * and <code>org.codehaus.plexus.compiler.util.scan.StaleSourceScanner</code> are supported.
-     *
-     */
-    @get:Input
-    abstract val sourceScanner: Property<String>
-
-    /**
      * Provides the option to add additional JARs to the Classpath for compiling. This is handy in case you have
      * references to external Java-Beans in your JasperReports.
      *
@@ -131,11 +120,12 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
      * </pre>
      *
      */
-    @get:Input
+    @get:InputFiles
+    @get:Classpath
     abstract val additionalClasspath: Property<FileCollection>
 
     init {
-        compiler.convention("net.sf.jasperreports.engine.design.JRJdtCompiler")
+        compiler.convention("net.sf.jasperreports.jdt.JRJdtCompiler")
         outputDirectory.convention(layout.buildDirectory.dir("jasper"))
         sourceDirectory.convention(layout.projectDirectory.dir("src/main/jasperreports"))
         sourceFileExt.convention(".jrxml")
@@ -145,7 +135,6 @@ abstract class JasperPluginExtension @Inject constructor(layout: ProjectLayout) 
         verbose.convention(false)
         numberOfThreads.convention(4)
         failOnMissingSourceDirectory.convention(true)
-        sourceScanner.convention("org.codehaus.plexus.compiler.util.scan.StaleSourceScanner")
     }
 }
 

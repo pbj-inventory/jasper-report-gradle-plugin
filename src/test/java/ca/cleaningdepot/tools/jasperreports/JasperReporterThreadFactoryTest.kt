@@ -1,7 +1,5 @@
 package ca.cleaningdepot.tools.jasperreports
 
-import org.gradle.api.Project
-import org.gradle.internal.impldep.org.apache.commons.compress.harmony.pack200.PackingUtils.config
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -18,7 +16,8 @@ internal class JasperReporterThreadFactoryTest {
         val tasks = arrayListOf(ThreadNameRetrieverTask(), ThreadNameRetrieverTask(), ThreadNameRetrieverTask())
 
         val config = project.extensions.getByType(JasperPluginExtension::class.java)
-        val executorService = Executors.newFixedThreadPool(2, JasperReporterThreadFactory(config))
+        val classpath = config.additionalClasspath.orNull?.map { it.toURI().toURL() }?.toTypedArray()
+        val executorService = Executors.newFixedThreadPool(2, JasperReporterThreadFactory(classpath))
         val output = executorService.invokeAll(tasks)
 
         Assertions.assertTrue(output[0].get()?.startsWith(JasperReporterThreadFactory.THREAD_PREFIX) ?: false)

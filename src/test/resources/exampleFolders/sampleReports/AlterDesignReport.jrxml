@@ -1,32 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AlterDesignReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
-	<style name="Sans_Normal" isDefault="true" fontName="DejaVu Sans" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<title>
-		<band height="782">
-			<staticText>
-				<reportElement style="Sans_Normal" mode="Opaque" x="0" y="0" width="555" height="90" backcolor="#DDDDDD"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[The rectangles below have random fore and back colors and even this text element has runtime supplied font settings.
+<jasperReport name="AlterDesignReport" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="2d73b20e-5e63-44d2-86e2-fd883df462de">
+	<style name="Sans_Normal" default="true" fontName="DejaVu Sans" fontSize="8.0" bold="false" italic="false" underline="false" strikeThrough="false"/>
+	<title height="782">
+		<element kind="staticText" uuid="2cba0713-c077-4aeb-8d77-3b4e41b51f70" mode="Opaque" x="0" y="0" width="555" height="90" backcolor="#DDDDDD" hTextAlign="Center" vTextAlign="Middle" style="Sans_Normal">
+			<text><![CDATA[The rectangles below have random fore and back colors and even this text element has runtime supplied font settings.
 Changing element colors or other settings do not require report design recompilation.]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement key="first.rectangle" x="0" y="100" width="555" height="90"/>
-				<graphicElement>
-					<pen lineWidth="4.0"/>
-				</graphicElement>
-			</rectangle>
-			<rectangle>
-				<reportElement key="second.rectangle" x="0" y="200" width="555" height="90"/>
-				<graphicElement>
-					<pen lineWidth="4.0"/>
-				</graphicElement>
-			</rectangle>
-			<rectangle>
-				<reportElement key="third.rectangle" x="0" y="300" width="555" height="90"/>
-				<graphicElement>
-					<pen lineWidth="4.0"/>
-				</graphicElement>
-			</rectangle>
-		</band>
+		</element>
+		<element kind="rectangle" uuid="830c71a4-61ae-421a-a065-504d2f258958" key="first.rectangle" x="0" y="100" width="555" height="90">
+			<pen lineWidth="4.0"/>
+		</element>
+		<element kind="rectangle" uuid="f7cafd1f-adcf-477e-8558-4bf652d5dfb3" key="second.rectangle" x="0" y="200" width="555" height="90">
+			<pen lineWidth="4.0"/>
+		</element>
+		<element kind="rectangle" uuid="a35925ca-41d0-4dc5-a09f-cbd7dd82ce21" key="third.rectangle" x="0" y="300" width="555" height="90">
+			<pen lineWidth="4.0"/>
+		</element>
 	</title>
 </jasperReport>

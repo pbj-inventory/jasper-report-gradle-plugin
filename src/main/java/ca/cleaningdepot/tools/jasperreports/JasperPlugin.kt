@@ -26,7 +26,6 @@ class JasperPlugin : Plugin<Project> {
         LOGGER.info("JasperReports Compiler: {}", configuration.compiler.orNull)
         LOGGER.info("Number of threads: {}", configuration.numberOfThreads.orNull)
         LOGGER.info("Additional Classpath: {}", configuration.additionalClasspath.orNull)
-        LOGGER.info("Source Scanner: {}", configuration.sourceScanner.orNull)
     }
 
     companion object {

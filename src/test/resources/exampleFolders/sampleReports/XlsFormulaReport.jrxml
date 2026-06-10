@@ -1,105 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="XlsFormulaReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport name="XlsFormulaReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e560c25e-3e1e-44f0-bd00-1834bc75ef22">
 	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
-	<title>
-		<band height="250">
-			<staticText>
-				<reportElement x="0" y="0" width="595" height="150"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[XLS Formula Report]]></text>
-			</staticText>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-1" x="0" y="150" width="280" height="23">
-					<property name="net.sf.jasperreports.export.xls.formula" value="7"/>
-				</reportElement>
-				<box rightPadding="5">
-					<topPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[Integer.valueOf(7)]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="280" y="150" width="315" height="23"/>
-				<box leftPadding="5">
-					<topPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[ =   A2 cell content]]></text>
-			</staticText>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="0" y="173" width="280" height="23">
-					<property name="net.sf.jasperreports.export.xls.formula" value="4"/>
-				</reportElement>
-				<box rightPadding="5">
-					<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[Integer.valueOf(4)]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="280" y="173" width="315" height="23"/>
-				<box leftPadding="5">
-					<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[ =   A3 cell content]]></text>
-			</staticText>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" x="0" y="196" width="280" height="23">
-					<property name="net.sf.jasperreports.export.xls.formula" value="SUM(A2,A3)"/>
-				</reportElement>
-				<box rightPadding="5">
-					<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[Integer.valueOf(0)]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="280" y="196" width="315" height="23"/>
-				<box leftPadding="5">
-					<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[ =   SUM(A2,A3)  in xls,  or 0 in pdf/html/rtf/txt/csv format]]></text>
-			</staticText>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-4" x="0" y="219" width="280" height="23">
-					<propertyExpression name="net.sf.jasperreports.export.xls.formula"><![CDATA["A" + Integer.valueOf(2).intValue() + "-A" + 3]]></propertyExpression>
-				</reportElement>
-				<box rightPadding="5">
-					<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="2.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[Integer.valueOf(0)]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="280" y="219" width="315" height="23"/>
-				<box leftPadding="5">
-					<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
-					<bottomPen lineWidth="2.0" lineColor="#C0C0C0"/>
-					<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[ =   A2 - A3  in xls,  or 0 in pdf/html/rtf/txt/csv format]]></text>
-			</staticText>
-		</band>
+	<title height="250">
+		<element kind="staticText" uuid="b6073e8d-e803-4ca8-a9a1-f3fb064580e5" x="0" y="0" width="595" height="150" fontSize="22.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[XLS Formula Report]]></text>
+		</element>
+		<element kind="textField" uuid="3da7c6a3-cc01-41e1-a24c-8fbb51eeb7cc" key="textField-1" x="0" y="150" width="280" height="23" blankWhenNull="false" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[Integer.valueOf(7)]]></expression>
+			<property name="net.sf.jasperreports.export.xls.formula" value="7"/>
+			<box rightPadding="5">
+				<topPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="d6aeb1fc-2c3f-47c2-9bbc-23fd27bebc07" x="280" y="150" width="315" height="23" vTextAlign="Middle">
+			<text><![CDATA[ =   A2 cell content]]></text>
+			<box leftPadding="5">
+				<topPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="textField" uuid="5f3c0ae6-fee1-48fa-86c8-9ed5fdb9b089" key="textField-2" x="0" y="173" width="280" height="23" blankWhenNull="false" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[Integer.valueOf(4)]]></expression>
+			<property name="net.sf.jasperreports.export.xls.formula" value="4"/>
+			<box rightPadding="5">
+				<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="d6312d85-858a-4358-b659-1cb2c350177b" x="280" y="173" width="315" height="23" vTextAlign="Middle">
+			<text><![CDATA[ =   A3 cell content]]></text>
+			<box leftPadding="5">
+				<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="textField" uuid="c435854e-3199-4167-bd47-1f3d971322bf" key="textField-3" x="0" y="196" width="280" height="23" blankWhenNull="false" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[Integer.valueOf(0)]]></expression>
+			<property name="net.sf.jasperreports.export.xls.formula" value="SUM(A2,A3)"/>
+			<box rightPadding="5">
+				<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="0e383614-318f-4ead-8914-d4a0d3d8245b" x="280" y="196" width="315" height="23" vTextAlign="Middle">
+			<text><![CDATA[ =   SUM(A2,A3)  in xls,  or 0 in pdf/html/rtf/txt/csv format]]></text>
+			<box leftPadding="5">
+				<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="textField" uuid="5a11eedd-0a47-4adc-ae8f-fc8aa3660918" key="textField-4" x="0" y="219" width="280" height="23" blankWhenNull="false" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[Integer.valueOf(0)]]></expression>
+			<propertyExpression name="net.sf.jasperreports.export.xls.formula"><![CDATA["A" + Integer.valueOf(2).intValue() + "-A" + 3]]></propertyExpression>
+			<box rightPadding="5">
+				<leftPen lineWidth="4.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="2.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="1.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="4d41a301-1cc7-4fc9-a771-1b0d98659785" x="280" y="219" width="315" height="23" vTextAlign="Middle">
+			<text><![CDATA[ =   A2 - A3  in xls,  or 0 in pdf/html/rtf/txt/csv format]]></text>
+			<box leftPadding="5">
+				<leftPen lineWidth="1.0" lineColor="#C0C0C0"/>
+				<bottomPen lineWidth="2.0" lineColor="#C0C0C0"/>
+				<rightPen lineWidth="2.0" lineColor="#C0C0C0"/>
+			</box>
+		</element>
 	</title>
 </jasperReport>

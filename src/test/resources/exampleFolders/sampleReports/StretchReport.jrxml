@@ -1,328 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<jasperReport
-		xmlns="http://jasperreports.sourceforge.net/jasperreports"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-		name="StretchReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30">
-	<title>
-		<band height="315">
-			<staticText>
-				<reportElement x="5" y="5" width="130" height="200"/>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[The outline on this column is made up of multiple vertical segments, two for each text field (left, right). They stretch with the corresponding text field. This solution has the disadvantage that it is impossible to suppres a text field space when the section overflows to a new page. Check the top of the second page to see that.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="145" y="5" width="130" height="200"/>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[In order to minimize the space occupied by the text fields even when they do not print, their height was set to zero. There still seems to be some problems with the bottom line that would sometimes print and sometimes not, when the section breaks, depending on the remaining space.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="285" y="5" width="130" height="200"/>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[This solution is similar with the previous. The left and right borders are made up of a single vertical line that stretches with the group represented by the three text fields. The page break behavior is almost the same.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="425" y="5" width="130" height="200"/>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[This seems to be the best solution for creating an outline for the three text fields. It is made up of a single rectangle that stretches with the group that contains the three text fields. The page breaks seem to work very well.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="205" width="130" height="100"/>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Text elements that do not stretch will have their contents truncated.  By default, the text is truncated at the last word that fits the area.
+<jasperReport name="StretchReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="df652917-4801-4b8e-b372-6173aae54cda">
+	<title height="315">
+		<element kind="staticText" uuid="a070aa4e-8789-46aa-be39-e8c2f5d6e8f6" x="5" y="5" width="130" height="200" fontSize="10.0">
+			<text><![CDATA[The outline on this column is made up of multiple vertical segments, two for each text field (left, right). They stretch with the corresponding text field. This solution has the disadvantage that it is impossible to suppres a text field space when the section overflows to a new page. Check the top of the second page to see that.]]></text>
+		</element>
+		<element kind="staticText" uuid="ae782495-b60d-4147-a509-9be621cb65be" x="145" y="5" width="130" height="200" fontSize="10.0">
+			<text><![CDATA[In order to minimize the space occupied by the text fields even when they do not print, their height was set to zero. There still seems to be some problems with the bottom line that would sometimes print and sometimes not, when the section breaks, depending on the remaining space.]]></text>
+		</element>
+		<element kind="staticText" uuid="cb6bba36-ed9a-46d9-bde2-e8952ee03d6d" x="285" y="5" width="130" height="200" fontSize="10.0">
+			<text><![CDATA[This solution is similar with the previous. The left and right borders are made up of a single vertical line that stretches with the group represented by the three text fields. The page break behavior is almost the same.]]></text>
+		</element>
+		<element kind="staticText" uuid="324a5038-1678-4afe-a640-3d86124a57f8" x="425" y="5" width="130" height="200" fontSize="10.0">
+			<text><![CDATA[This seems to be the best solution for creating an outline for the three text fields. It is made up of a single rectangle that stretches with the group that contains the three text fields. The page breaks seem to work very well.]]></text>
+		</element>
+		<element kind="staticText" uuid="c7262e6b-c4ce-437d-9ac1-2cdecf1f6541" x="5" y="205" width="130" height="100" fontSize="10.0">
+			<text><![CDATA[Text elements that do not stretch will have their contents truncated.  By default, the text is truncated at the last word that fits the area.
 This sentence might not fit fully in the space reserved for the element.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="145" y="205" width="130" height="100">
-					<property name="net.sf.jasperreports.text.truncate.at.char" value="true"/>
-				</reportElement>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Text elements can also be truncated at the last character that fits the element reserved area; the behavior is triggered by setting a property.
+		</element>
+		<element kind="staticText" uuid="56a03fbf-0c60-4940-8217-55935d8eac0f" x="145" y="205" width="130" height="100" fontSize="10.0">
+			<text><![CDATA[Text elements can also be truncated at the last character that fits the element reserved area; the behavior is triggered by setting a property.
 This sentence might not fit fully in the space reserved for the element.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="285" y="205" width="130" height="100">
-					<property name="net.sf.jasperreports.text.truncate.suffix" value="&#x2026;"/>
-				</reportElement>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Also, a suffix (for instance an ellipses character), specified via a property, can be appended to the text to indicate that it has been truncated.
+			<property name="net.sf.jasperreports.text.truncate.at.char" value="true"/>
+		</element>
+		<element kind="staticText" uuid="a7ebe163-15ad-44fc-97a4-63febe98cdc4" x="285" y="205" width="130" height="100" fontSize="10.0">
+			<text><![CDATA[Also, a suffix (for instance an ellipses character), specified via a property, can be appended to the text to indicate that it has been truncated.
 This sentence might not fit fully in the space reserved for the element.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="425" y="205" width="130" height="100">
-					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
-				</reportElement>
-				<textElement>
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Even when an elements has its contents truncated, the entire text can still be kept so that data-centric exporters such as Excel or CSV would use it.
+			<property name="net.sf.jasperreports.text.truncate.suffix" value="…"/>
+		</element>
+		<element kind="staticText" uuid="700e3858-fe4a-4e61-ac28-1c28eae1d191" x="425" y="205" width="130" height="100" fontSize="10.0">
+			<text><![CDATA[Even when an elements has its contents truncated, the entire text can still be kept so that data-centric exporters such as Excel or CSV would use it.
 This sentence might not fit fully in the space reserved for the element.]]></text>
-			</staticText>
-		</band>
+			<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+		</element>
 	</title>
-	<pageHeader>
-		<band height="15">
-			<rectangle>
-				<reportElement x="0" y="1" width="555" height="13" backcolor="#ffdddd"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<line>
-				<reportElement x="0" y="14" width="555" height="1" forecolor="#ff0000"/>
-				<graphicElement/>
-			</line>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="1" width="500" height="13" forecolor="#ff0000" backcolor="#ffdddd"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Page Header]]></text>
-			</staticText>
-			<textField>
-				<reportElement mode="Opaque" x="500" y="1" width="55" height="13" forecolor="#ff0000" backcolor="#ffdddd"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
-			</textField>
-		</band>
+	<pageHeader height="15">
+		<element kind="rectangle" uuid="1cff0238-e74b-4314-857c-195ff369a2d6" x="0" y="1" width="555" height="13" backcolor="#FFDDDD">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="line" uuid="9437030a-32d0-493a-a68f-66a52f049561" x="0" y="14" width="555" height="1" forecolor="#FF0000"/>
+		<element kind="staticText" uuid="e41a02cc-1cd7-4773-be63-19323dd358df" mode="Opaque" x="0" y="1" width="500" height="13" forecolor="#FF0000" backcolor="#FFDDDD" bold="true">
+			<text><![CDATA[Page Header]]></text>
+		</element>
+		<element kind="textField" uuid="2f73c869-763e-48e6-9afd-a7011d97b91b" mode="Opaque" x="500" y="1" width="55" height="13" forecolor="#FF0000" backcolor="#FFDDDD" bold="true" hTextAlign="Right">
+			<expression><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER})]]></expression>
+		</element>
 	</pageHeader>
 	<detail>
 		<band height="60">
-			<line>
-				<reportElement positionType="Float" x="5" y="4" width="130" height="1" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="5" y="5" width="1" height="16" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement x="10" y="5" width="100" height="16" isRemoveLineWhenBlank="true"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="5" width="1" height="16" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="5" y="22" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#808080"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="20" y="22" width="100" height="16" isRemoveLineWhenBlank="true" forecolor="#808080"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="22" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#808080"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="5" y="39" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="30" y="39" width="100" height="16" isRemoveLineWhenBlank="true" forecolor="#c0c0c0"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="135" y="39" width="1" height="16" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<line>
-				<reportElement positionType="Float" x="5" y="56" width="130" height="1" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			<line>
-				<reportElement positionType="Float" x="145" y="4" width="130" height="1" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="145" y="5" width="1" height="1" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement x="150" y="5" width="100" height="0" isRemoveLineWhenBlank="true"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="275" y="5" width="1" height="1" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="145" y="6" width="1" height="1" isPrintWhenDetailOverflows="true" forecolor="#808080"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="160" y="6" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#808080"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="275" y="6" width="1" height="1" isPrintWhenDetailOverflows="true" forecolor="#808080"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="145" y="7" width="1" height="1" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="170" y="7" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#c0c0c0"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="275" y="7" width="1" height="1" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<line>
-				<reportElement positionType="Float" x="145" y="8" width="130" height="1" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			<elementGroup>
-			<rectangle>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="425" y="4" width="130" height="4" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</rectangle>
-			<textField textAdjust="StretchHeight">
-				<reportElement x="430" y="5" width="100" height="0" isRemoveLineWhenBlank="true"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="440" y="6" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#808080"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="450" y="7" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#c0c0c0"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			</elementGroup>
-			<line>
-				<reportElement positionType="Float" x="285" y="4" width="130" height="1" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<elementGroup>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="285" y="5" width="1" height="3" isPrintWhenDetailOverflows="true"/>
-				<graphicElement/>
-			</line>
-			<textField textAdjust="StretchHeight">
-				<reportElement x="290" y="5" width="100" height="0" isRemoveLineWhenBlank="true"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="300" y="6" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#808080"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="310" y="7" width="100" height="0" isRemoveLineWhenBlank="true" forecolor="#c0c0c0"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="415" y="5" width="1" height="3" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			</elementGroup>
-			<line>
-				<reportElement positionType="Float" x="285" y="8" width="130" height="1" isPrintWhenDetailOverflows="true" forecolor="#c0c0c0"/>
-				<graphicElement/>
-			</line>
-			<staticText>
-				<reportElement positionType="Float" isPrintRepeatedValues="false" x="145" y="9" width="130" height="47" isRemoveLineWhenBlank="true" forecolor="#c0c0c0"/>
-				<textElement/>
+			<element kind="line" uuid="27f44aea-7c16-4eb5-9dfd-399f3818d341" positionType="Float" x="5" y="4" width="130" height="1" printWhenDetailOverflows="true"/>
+			<element kind="elementGroup">
+				<element kind="line" uuid="08ff7b99-80f6-41c9-b01d-9d1eae846744" positionType="Float" stretchType="ElementGroupHeight" x="5" y="5" width="1" height="16" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="858cf2a4-7fe3-493d-998f-75e2f758bf52" x="10" y="5" width="100" height="16" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="2d7f9702-2645-4f53-83eb-36b9c7136714" positionType="Float" stretchType="ElementGroupHeight" x="135" y="5" width="1" height="16" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="elementGroup">
+				<element kind="line" uuid="e2da4b1b-65e3-439c-901a-841236c10680" positionType="Float" stretchType="ElementGroupHeight" x="5" y="22" width="1" height="16" forecolor="#808080" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="3a92fd5a-30c8-4f5e-b086-9fab088ee851" positionType="Float" x="20" y="22" width="100" height="16" forecolor="#808080" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="24222308-20cf-468d-9398-c9da304e7ff8" positionType="Float" stretchType="ElementGroupHeight" x="135" y="22" width="1" height="16" forecolor="#808080" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="elementGroup">
+				<element kind="line" uuid="e360994d-6451-4ead-8607-7556f5941c1e" positionType="Float" stretchType="ElementGroupHeight" x="5" y="39" width="1" height="16" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="24f78708-7fce-4b84-800b-b47350df9e78" positionType="Float" x="30" y="39" width="100" height="16" forecolor="#C0C0C0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="6e07be14-8ff1-4ed1-ab50-d30e0d6960d1" positionType="Float" stretchType="ElementGroupHeight" x="135" y="39" width="1" height="16" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="line" uuid="68e911ae-d443-4b2f-adc4-a6505a63e983" positionType="Float" x="5" y="56" width="130" height="1" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			<element kind="line" uuid="7ff56ec4-558c-40d0-80af-a5da55554464" positionType="Float" x="145" y="4" width="130" height="1" printWhenDetailOverflows="true"/>
+			<element kind="elementGroup">
+				<element kind="line" uuid="c7a9dbcb-f790-48bb-9b6e-568a12e11169" positionType="Float" stretchType="ElementGroupHeight" x="145" y="5" width="1" height="1" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="d36c6967-8cc2-4be1-90f0-fdcf432c36aa" x="150" y="5" width="100" height="0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="25a212b7-b71a-4393-8bbc-4866aaa7327c" positionType="Float" stretchType="ElementGroupHeight" x="275" y="5" width="1" height="1" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="elementGroup">
+				<element kind="line" uuid="2253b7cc-d923-4371-ab16-1601b1e99ceb" positionType="Float" stretchType="ElementGroupHeight" x="145" y="6" width="1" height="1" forecolor="#808080" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="9c4143c1-a581-4286-8432-a0a7e97e37ab" positionType="Float" x="160" y="6" width="100" height="0" forecolor="#808080" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="3372b522-f3c2-448e-aec6-cdf772071ce7" positionType="Float" stretchType="ElementGroupHeight" x="275" y="6" width="1" height="1" forecolor="#808080" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="elementGroup">
+				<element kind="line" uuid="8850de04-d6b5-401d-978f-74f51d0857cc" positionType="Float" stretchType="ElementGroupHeight" x="145" y="7" width="1" height="1" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="7a6eddc8-9aed-4ae6-9a8b-656c6738e20d" positionType="Float" x="170" y="7" width="100" height="0" forecolor="#C0C0C0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="b41d6cb5-c3c5-44b0-a28c-3af5056db432" positionType="Float" stretchType="ElementGroupHeight" x="275" y="7" width="1" height="1" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="line" uuid="42406eb1-ed38-4a71-9c94-2b68e4f679d5" positionType="Float" x="145" y="8" width="130" height="1" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			<element kind="elementGroup">
+				<element kind="rectangle" uuid="5687f0a2-0d5d-4ab6-9fee-1da4fcb0096f" positionType="Float" stretchType="ElementGroupHeight" x="425" y="4" width="130" height="4" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="57b34410-8961-4c1a-b9e2-4d27f8638a4d" x="430" y="5" width="100" height="0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="textField" uuid="e7bbe5c9-c7de-43af-b888-928d8e4ea55b" positionType="Float" x="440" y="6" width="100" height="0" forecolor="#808080" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="textField" uuid="22482875-f004-4b35-a3b4-88bb20aafe13" positionType="Float" x="450" y="7" width="100" height="0" forecolor="#C0C0C0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+			</element>
+			<element kind="line" uuid="dcecc2bf-43f1-4694-84f4-1af390018298" positionType="Float" x="285" y="4" width="130" height="1" printWhenDetailOverflows="true"/>
+			<element kind="elementGroup">
+				<element kind="line" uuid="91ab0155-8fcd-4649-9924-254da9e4198e" positionType="Float" stretchType="ElementGroupHeight" x="285" y="5" width="1" height="3" printWhenDetailOverflows="true"/>
+				<element kind="textField" uuid="c756eebd-02e8-4d8e-b8cd-a01631a1c604" x="290" y="5" width="100" height="0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a FIRST long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="textField" uuid="3bb721ec-6808-4c1b-a71b-7806ac67a419" positionType="Float" x="300" y="6" width="100" height="0" forecolor="#808080" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a SECOND long chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="textField" uuid="a6725f1f-1f78-45e6-81e6-d2fbefc8398d" positionType="Float" x="310" y="7" width="100" height="0" forecolor="#C0C0C0" fontSize="12.0" textAdjust="StretchHeight" removeLineWhenBlank="true" hTextAlign="Justified">
+					<expression><![CDATA["This is a THIRD chunk of text that will cause the text field to stretch outside its defined height and force other elements to move downwards."]]></expression>
+				</element>
+				<element kind="line" uuid="5c17d155-8a97-4b1b-83c0-c412617e37d3" positionType="Float" stretchType="ElementGroupHeight" x="415" y="5" width="1" height="3" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			</element>
+			<element kind="line" uuid="265cbcea-96b5-4349-8a3b-f209dc4b15de" positionType="Float" x="285" y="8" width="130" height="1" forecolor="#C0C0C0" printWhenDetailOverflows="true"/>
+			<element kind="staticText" uuid="e7df0c3b-d586-4d44-9e1e-f512f00278f0" positionType="Float" x="145" y="9" width="130" height="47" forecolor="#C0C0C0" printRepeatedValues="false" removeLineWhenBlank="true">
 				<text><![CDATA[Space remover. This static text never prints, but it is used to eliminate the remaining space till the bottom of the band.]]></text>
-			</staticText>
+			</element>
 		</band>
 	</detail>
-	<pageFooter>
-		<band height="15">
-			<rectangle>
-				<reportElement x="0" y="1" width="555" height="13" backcolor="#ffdddd"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<line>
-				<reportElement x="0" y="0" width="555" height="1" forecolor="#ff0000"/>
-				<graphicElement/>
-			</line>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="1" width="500" height="13" forecolor="#ff0000" backcolor="#ffdddd"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Page Footer]]></text>
-			</staticText>
-			<textField>
-				<reportElement mode="Opaque" x="500" y="1" width="55" height="13" forecolor="#ff0000" backcolor="#ffdddd"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
-			</textField>
-		</band>
+	<pageFooter height="15">
+		<element kind="rectangle" uuid="1c641695-0a55-4b72-a61e-daf73cee9c4e" x="0" y="1" width="555" height="13" backcolor="#FFDDDD">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="line" uuid="6d466486-60f6-45fc-90bf-4e94f290097c" x="0" y="0" width="555" height="1" forecolor="#FF0000"/>
+		<element kind="staticText" uuid="fbefd781-497c-4189-a977-c3829026b266" mode="Opaque" x="0" y="1" width="500" height="13" forecolor="#FF0000" backcolor="#FFDDDD" bold="true">
+			<text><![CDATA[Page Footer]]></text>
+		</element>
+		<element kind="textField" uuid="93fdf87d-d74e-46d2-9740-168e4d87b010" mode="Opaque" x="500" y="1" width="55" height="13" forecolor="#FF0000" backcolor="#FFDDDD" bold="true" hTextAlign="Right">
+			<expression><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER})]]></expression>
+		</element>
 	</pageFooter>
 </jasperReport>

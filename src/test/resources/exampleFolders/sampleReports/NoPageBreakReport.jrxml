@@ -1,188 +1,116 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<jasperReport
-		xmlns="http://jasperreports.sourceforge.net/jasperreports"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-		name="NoPageBreakReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
-	<style name="Sans_Normal" isDefault="true" fontName="DejaVu Sans" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<style name="Sans_Bold" isDefault="false" fontName="DejaVu Sans" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
-	<style name="Sans_Italic" isDefault="false" fontName="DejaVu Sans" fontSize="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
-	<parameter name="ReportTitle" class="java.lang.String">
-	</parameter>
-	<queryString><![CDATA[SELECT * FROM Orders WHERE OrderID < 10500 ORDER BY ShipCountry]]></queryString>
-	<field name="OrderID" class="java.lang.Integer">
-	</field>
-	<field name="ShipName" class="java.lang.String">
-	</field>
-	<field name="ShipCity" class="java.lang.String">
-	</field>
-	<field name="ShipCountry" class="java.lang.String">
-	</field>
-	<variable name="HeadingsCollection" class="java.util.Collection" calculation="System">
+<jasperReport name="NoPageBreakReport" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="22459a97-1b97-46ea-adcb-736dc5f94bd8">
+	<style name="Sans_Normal" default="true" fontName="DejaVu Sans" fontSize="12.0" bold="false" italic="false" underline="false" strikeThrough="false"/>
+	<style name="Sans_Bold" fontName="DejaVu Sans" fontSize="12.0" bold="true" italic="false" underline="false" strikeThrough="false"/>
+	<style name="Sans_Italic" fontName="DejaVu Sans" fontSize="12.0" bold="false" italic="true" underline="false" strikeThrough="false"/>
+	<parameter name="ReportTitle" class="java.lang.String"/>
+	<query language="sql"><![CDATA[SELECT * FROM Orders WHERE OrderID < 10500 ORDER BY ShipCountry]]></query>
+	<field name="OrderID" class="java.lang.Integer"/>
+	<field name="ShipName" class="java.lang.String"/>
+	<field name="ShipCity" class="java.lang.String"/>
+	<field name="ShipCountry" class="java.lang.String"/>
+	<variable name="HeadingsCollection" calculation="System" class="java.util.Collection">
 		<initialValueExpression><![CDATA[new java.util.ArrayList()]]></initialValueExpression>
 	</variable>
-	<variable name="FirstLetter" class="java.lang.String" resetType="None">
-		<variableExpression><![CDATA[$F{ShipCountry}.substring(0, 1).toUpperCase()]]></variableExpression>
+	<variable name="FirstLetter" resetType="None" class="java.lang.String">
+		<expression><![CDATA[$F{ShipCountry}.substring(0, 1).toUpperCase()]]></expression>
 	</variable>
-	<variable name="ShipCountryNumber" class="java.lang.Integer" resetType="Group" resetGroup="ShipCountryGroup" calculation="System">
+	<variable name="ShipCountryNumber" resetType="Group" calculation="System" resetGroup="ShipCountryGroup" class="java.lang.Integer">
 		<initialValueExpression><![CDATA[($V{ShipCountryNumber} != null)?(Integer.valueOf($V{ShipCountryNumber}.intValue() + 1)):(Integer.valueOf(1))]]></initialValueExpression>
 	</variable>
 	<group name="FirstLetterGroup" minHeightToStartNewPage="60">
-		<groupExpression><![CDATA[$V{FirstLetter}]]></groupExpression>
+		<expression><![CDATA[$V{FirstLetter}]]></expression>
 		<groupHeader>
-		<band height="25">
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="10" height="10" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<rectangle>
-				<reportElement x="0" y="10" width="515" height="15" forecolor="#c0c0c0" backcolor="#c0c0c0"/>
-				<graphicElement/>
-			</rectangle>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="10" width="190" height="15" backcolor="#c0c0c0" style="Sans_Italic"/>
-				<text><![CDATA[Countries Starting With Letter :]]></text>
-			</staticText>
-			<textField>
-				<reportElement mode="Opaque" x="190" y="10" width="325" height="15" backcolor="#c0c0c0" style="Sans_Bold"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$V{FirstLetter}]]></textFieldExpression>
-				<anchorNameExpression><![CDATA["FirstLetterGroup_" + $V{FirstLetter}]]></anchorNameExpression>
-			</textField>
-		</band>
+			<band height="25">
+				<element kind="rectangle" uuid="0f261cf1-22ae-47a4-b2a6-7f073f88da46" mode="Transparent" x="0" y="0" width="10" height="10" forecolor="#FF0000" backcolor="#FFAFAF">
+					<pen lineWidth="0.0"/>
+				</element>
+				<element kind="rectangle" uuid="9b42d4a0-1908-4138-9eec-22fba5952740" x="0" y="10" width="515" height="15" forecolor="#C0C0C0" backcolor="#C0C0C0"/>
+				<element kind="staticText" uuid="c5b68689-8f80-4408-8a3e-b638ce834755" mode="Opaque" x="0" y="10" width="190" height="15" backcolor="#C0C0C0" style="Sans_Italic">
+					<text><![CDATA[Countries Starting With Letter :]]></text>
+				</element>
+				<element kind="textField" uuid="6921733b-36a0-4d49-8acc-82dea63420a6" mode="Opaque" x="190" y="10" width="325" height="15" backcolor="#C0C0C0" style="Sans_Bold">
+					<expression><![CDATA[$V{FirstLetter}]]></expression>
+					<anchorNameExpression><![CDATA["FirstLetterGroup_" + $V{FirstLetter}]]></anchorNameExpression>
+				</element>
+			</band>
 		</groupHeader>
 	</group>
 	<group name="ShipCountryGroup" minHeightToStartNewPage="60">
-		<groupExpression><![CDATA[$F{ShipCountry}]]></groupExpression>
+		<expression><![CDATA[$F{ShipCountry}]]></expression>
 		<groupHeader>
-		<band height="20">
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="10" height="4" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<line direction="BottomUp">
-				<reportElement x="0" y="19" width="515" height="1"/>
-				<graphicElement/>
-			</line>
-			<textField>
-				<reportElement x="0" y="4" width="515" height="15" style="Sans_Bold"/>
-				<textFieldExpression class="java.lang.String"><![CDATA["  " + String.valueOf($V{ShipCountryNumber}) + ". " + String.valueOf($F{ShipCountry})]]></textFieldExpression>
-				<anchorNameExpression><![CDATA["ShipCountryGroup_" + $V{ShipCountryNumber}]]></anchorNameExpression>
-			</textField>
-		</band>
+			<band height="20">
+				<element kind="rectangle" uuid="8c03effc-957a-4b8a-95ea-21541becf054" mode="Transparent" x="0" y="0" width="10" height="4" forecolor="#FF0000" backcolor="#FFAFAF">
+					<pen lineWidth="0.0"/>
+				</element>
+				<element kind="line" uuid="5424e315-62ff-4413-96aa-f41ba9698da7" x="0" y="19" width="515" height="1" direction="BottomUp"/>
+				<element kind="textField" uuid="b7f04e5d-1a03-45b1-97f4-e5b9c16db04f" x="0" y="4" width="515" height="15" style="Sans_Bold">
+					<expression><![CDATA["  " + String.valueOf($V{ShipCountryNumber}) + ". " + String.valueOf($F{ShipCountry})]]></expression>
+					<anchorNameExpression><![CDATA["ShipCountryGroup_" + $V{ShipCountryNumber}]]></anchorNameExpression>
+				</element>
+			</band>
 		</groupHeader>
 		<groupFooter>
-		<band height="20">
-			<rectangle>
-				<reportElement mode="Transparent" x="400" y="16" width="10" height="4" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<line>
-				<reportElement x="0" y="0" width="515" height="1"/>
-				<graphicElement/>
-			</line>
-			<staticText>
-				<reportElement x="400" y="1" width="60" height="15" style="Sans_Bold"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[Count :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="460" y="1" width="30" height="15" style="Sans_Bold"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{ShipCountryGroup_COUNT}]]></textFieldExpression>
-			</textField>
-		</band>
+			<band height="20">
+				<element kind="rectangle" uuid="07b358d7-531f-45d9-ba22-930b8233f3df" mode="Transparent" x="400" y="16" width="10" height="4" forecolor="#FF0000" backcolor="#FFAFAF">
+					<pen lineWidth="0.0"/>
+				</element>
+				<element kind="line" uuid="9856a0e3-62fe-453a-b164-db22d4faac4d" x="0" y="0" width="515" height="1"/>
+				<element kind="staticText" uuid="f6421e46-62ec-4bef-b96e-78a0762c5c4e" x="400" y="1" width="60" height="15" hTextAlign="Right" style="Sans_Bold">
+					<text><![CDATA[Count :]]></text>
+				</element>
+				<element kind="textField" uuid="01c9f457-a895-4221-b12a-912a3f98d03d" x="460" y="1" width="30" height="15" hTextAlign="Right" style="Sans_Bold">
+					<expression><![CDATA[$V{ShipCountryGroup_COUNT}]]></expression>
+				</element>
+			</band>
 		</groupFooter>
 	</group>
-	<title>
-		<band height="65">
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="10" height="10" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<staticText>
-				<reportElement x="0" y="10" width="515" height="30" style="Sans_Normal"/>
-				<textElement textAlignment="Center">
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[Order List]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="40" width="10" height="10" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="50" width="55" height="15" forecolor="#ffffff" backcolor="#333333" style="Sans_Bold"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="55" y="50" width="205" height="15" forecolor="#ffffff" backcolor="#333333" style="Sans_Bold"/>
-				<text><![CDATA[Name]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="260" y="50" width="255" height="15" forecolor="#ffffff" backcolor="#333333" style="Sans_Bold"/>
-				<text><![CDATA[City]]></text>
-			</staticText>
-		</band>
+	<title height="65">
+		<element kind="rectangle" uuid="20a0d385-c98c-401a-bca1-8c83b1ee4f6e" mode="Transparent" x="0" y="0" width="10" height="10" forecolor="#FF0000" backcolor="#FFAFAF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="81f4b138-6366-4461-97aa-3da1253b6686" x="0" y="10" width="515" height="30" fontSize="22.0" hTextAlign="Center" style="Sans_Normal">
+			<text><![CDATA[Order List]]></text>
+		</element>
+		<element kind="rectangle" uuid="8d85aaeb-3ba1-4606-a9b8-3275e109be13" mode="Transparent" x="0" y="40" width="10" height="10" forecolor="#FF0000" backcolor="#FFAFAF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="a520b900-64c9-49a4-adfd-8722177ae1bc" mode="Opaque" x="0" y="50" width="55" height="15" forecolor="#FFFFFF" backcolor="#333333" hTextAlign="Center" style="Sans_Bold">
+			<text><![CDATA[ID]]></text>
+		</element>
+		<element kind="staticText" uuid="36e666b9-5e98-4c80-b3a5-35e4aeb6ea7a" mode="Opaque" x="55" y="50" width="205" height="15" forecolor="#FFFFFF" backcolor="#333333" style="Sans_Bold">
+			<text><![CDATA[Name]]></text>
+		</element>
+		<element kind="staticText" uuid="723cae61-aa62-43c0-bb03-139411208430" mode="Opaque" x="260" y="50" width="255" height="15" forecolor="#FFFFFF" backcolor="#333333" style="Sans_Bold">
+			<text><![CDATA[City]]></text>
+		</element>
 	</title>
 	<detail>
 		<band height="20">
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="10" height="5" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<textField>
-				<reportElement x="0" y="5" width="50" height="15"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{OrderID}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="55" y="5" width="200" height="15"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ShipName}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight">
-				<reportElement positionType="Float" x="260" y="5" width="255" height="15"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ShipCity}]]></textFieldExpression>
-			</textField>
+			<element kind="rectangle" uuid="eeae7b8f-9275-49f2-8746-7ef142b111a1" mode="Transparent" x="0" y="0" width="10" height="5" forecolor="#FF0000" backcolor="#FFAFAF">
+				<pen lineWidth="0.0"/>
+			</element>
+			<element kind="textField" uuid="df0fa7b0-cda7-4f48-811a-64923d762092" x="0" y="5" width="50" height="15" hTextAlign="Right">
+				<expression><![CDATA[$F{OrderID}]]></expression>
+			</element>
+			<element kind="textField" uuid="9e4469cd-73f7-461d-beb5-bb0cdf1cf0c7" positionType="Float" x="55" y="5" width="200" height="15" textAdjust="StretchHeight">
+				<expression><![CDATA[$F{ShipName}]]></expression>
+			</element>
+			<element kind="textField" uuid="79aad942-9119-405f-8eaa-8705b212ae9e" positionType="Float" x="260" y="5" width="255" height="15" textAdjust="StretchHeight">
+				<expression><![CDATA[$F{ShipCity}]]></expression>
+			</element>
 		</band>
 	</detail>
-	<summary>
-		<band height="60">
-			<rectangle>
-				<reportElement mode="Transparent" x="175" y="0" width="10" height="20" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-			<textField textAdjust="StretchHeight">
-				<reportElement x="175" y="20" width="165" height="15" style="Sans_Italic"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression class="java.lang.String"><![CDATA["There were " + 
+	<summary height="60">
+		<element kind="rectangle" uuid="fc697631-b9dc-402f-a196-073f05289e1f" mode="Transparent" x="175" y="0" width="10" height="20" forecolor="#FF0000" backcolor="#FFAFAF">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="textField" uuid="ade00217-efa9-4e3b-85b8-adef94a66596" x="175" y="20" width="165" height="15" textAdjust="StretchHeight" hTextAlign="Center" style="Sans_Italic">
+			<expression><![CDATA["There were " + 
 					String.valueOf($V{REPORT_COUNT}) + 
-					" orders on this report."]]></textFieldExpression>
-			</textField>
-			<rectangle>
-				<reportElement positionType="Float" mode="Transparent" x="175" y="35" width="10" height="25" forecolor="#ff0000" backcolor="#ffafaf"/>
-				<graphicElement>
-					<pen lineWidth="0"/>
-				</graphicElement>
-			</rectangle>
-		</band>
+					" orders on this report."]]></expression>
+		</element>
+		<element kind="rectangle" uuid="65e1a3cb-e5bf-48b3-b529-bd86341421c3" positionType="Float" mode="Transparent" x="175" y="35" width="10" height="25" forecolor="#FF0000" backcolor="#FFAFAF">
+			<pen lineWidth="0.0"/>
+		</element>
 	</summary>
 </jasperReport>

@@ -1,48 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<jasperReport
-		xmlns="http://jasperreports.sourceforge.net/jasperreports"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-		name="LandscapeReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-	<title>
-		<band height="595">
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="50" height="50" backcolor="#333333"/>
-				<textElement/>
-				<text><![CDATA[.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="545" width="50" height="50" backcolor="#333333"/>
-				<textElement/>
-				<text><![CDATA[.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="792" y="0" width="50" height="50" backcolor="#333333"/>
-				<textElement/>
-				<text><![CDATA[.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="792" y="545" width="50" height="50" backcolor="#333333"/>
-				<textElement/>
-				<text><![CDATA[.]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="100" y="0" width="200" height="595"/>
-				<graphicElement/>
-			</rectangle>
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="100" width="842" height="200"/>
-				<graphicElement/>
-			</rectangle>
-			<staticText>
-				<reportElement x="100" y="100" width="150" height="30"/>
-				<textElement>
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[LANDSCAPE]]></text>
-			</staticText>
-		</band>
+<jasperReport name="LandscapeReport" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="34b2d96b-56e4-4856-b2b2-8afff792d213">
+	<title height="595">
+		<element kind="staticText" uuid="3c5f7a64-81ed-4638-acae-d46446e39e87" mode="Opaque" x="0" y="0" width="50" height="50" backcolor="#333333">
+			<text><![CDATA[.]]></text>
+		</element>
+		<element kind="staticText" uuid="1aa06886-109b-4ea0-ba85-18b06082ed4f" mode="Opaque" x="0" y="545" width="50" height="50" backcolor="#333333">
+			<text><![CDATA[.]]></text>
+		</element>
+		<element kind="staticText" uuid="c37ca843-7433-4186-8e97-d40034901c91" mode="Opaque" x="792" y="0" width="50" height="50" backcolor="#333333">
+			<text><![CDATA[.]]></text>
+		</element>
+		<element kind="staticText" uuid="adf24016-435b-4ebe-9efa-a374955a6bab" mode="Opaque" x="792" y="545" width="50" height="50" backcolor="#333333">
+			<text><![CDATA[.]]></text>
+		</element>
+		<element kind="rectangle" uuid="89d86c24-fde0-4b66-a40e-cdc10e5aab71" x="100" y="0" width="200" height="595"/>
+		<element kind="rectangle" uuid="429d3107-0370-472b-b2a2-33af665800fd" mode="Transparent" x="0" y="100" width="842" height="200"/>
+		<element kind="staticText" uuid="d7a5f5a4-789f-4be6-ae41-8339c1983d90" x="100" y="100" width="150" height="30" fontSize="22.0">
+			<text><![CDATA[LANDSCAPE]]></text>
+		</element>
 	</title>
 </jasperReport>

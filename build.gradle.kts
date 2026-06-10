@@ -16,16 +16,19 @@ repositories {
 }
 
 dependencies {
-    api("net.sf.jasperreports:jasperreports:6.21.4")
-    api("net.sf.jasperreports:jasperreports-fonts:6.21.4")
-    api("net.sf.jasperreports:jasperreports-functions:6.21.4")
-    api("org.mozilla:rhino:1.7.14")
-    api("org.codehaus.plexus:plexus-compiler-api:2.13.0")
+    implementation("net.sf.jasperreports:jasperreports:7.0.7")
+    implementation("net.sf.jasperreports:jasperreports-jdt:7.0.7")
     implementation(kotlin("stdlib-jdk8"))
-
     testImplementation(gradleTestKit())
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-fonts:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-charts:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-javascript:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-json:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-hibernate:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-barbecue:7.0.7")
+    testRuntimeOnly("net.sf.jasperreports:jasperreports-pdf:7.0.7")
 }
 
 gradlePlugin {

@@ -1,39 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<jasperReport
-		xmlns="http://jasperreports.sourceforge.net/jasperreports"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-		name="JFreeChartReport" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" scriptletClass="JFreeChartScriptlet">
-	<variable name="Chart" class="net.sf.jasperreports.engine.JRRenderable" calculation="System">
-	</variable>
-	<title>
-		<band height="742">
-			<line>
-				<reportElement x="0" y="0" width="515" height="1"/>
-				<graphicElement/>
-			</line>
-			<staticText>
-				<reportElement x="0" y="10" width="515" height="30"/>
-				<textElement textAlignment="Center">
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[JFreeChart Sample]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="50" width="515" height="50"/>
-				<textElement textAlignment="Center">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This sample uses JFreeChart Version 1.0.0-pre2\n" + "Written by David Gilbert (david.gilbert@object-refinery.com) and others.\n" + "(C)opyright 2000-2004, by Object Refinery Limited and Contributors."]]></textFieldExpression>
-			</textField>
-			<image scaleImage="Clip" hAlign="Center" hyperlinkType="Reference">
-				<reportElement x="0" y="110" width="515" height="300"/>
-				<graphicElement/>
-				<imageExpression class="net.sf.jasperreports.engine.JRRenderable"><![CDATA[$V{Chart}]]></imageExpression>
-				<hyperlinkReferenceExpression><![CDATA["http://www.jfree.org/jfreechart"]]></hyperlinkReferenceExpression>
-			</image>
-		</band>
+<jasperReport name="JFreeChartReport" language="java" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" scriptletClass="JFreeChartScriptlet" uuid="3950c1bd-c327-4ad8-9e12-09e5901f4196">
+	<variable name="Chart" calculation="System" class="net.sf.jasperreports.engine.JRRenderable"/>
+	<title height="742">
+		<element kind="line" uuid="a9923b8a-a9fe-4859-9736-1e96ca8760e6" x="0" y="0" width="515" height="1"/>
+		<element kind="staticText" uuid="b4cd9490-a2af-4a60-baad-712eef99bf36" x="0" y="10" width="515" height="30" fontSize="22.0" hTextAlign="Center">
+			<text><![CDATA[JFreeChart Sample]]></text>
+		</element>
+		<element kind="textField" uuid="ca407301-0e33-4edd-9245-4cf98e610248" x="0" y="50" width="515" height="50" fontSize="12.0" hTextAlign="Center">
+			<expression><![CDATA["This sample uses JFreeChart Version 1.0.0-pre2\n" + "Written by David Gilbert (david.gilbert@object-refinery.com) and others.\n" + "(C)opyright 2000-2004, by Object Refinery Limited and Contributors."]]></expression>
+		</element>
+		<element kind="image" uuid="35aa9f27-7903-4b4b-8806-be79d7b91dde" x="0" y="110" width="515" height="300" scaleImage="Clip" linkType="Reference" hImageAlign="Center">
+			<expression><![CDATA[$V{Chart}]]></expression>
+			<hyperlinkReferenceExpression><![CDATA["http://www.jfree.org/jfreechart"]]></hyperlinkReferenceExpression>
+		</element>
 	</title>
 </jasperReport>

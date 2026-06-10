@@ -1,138 +1,97 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AddressesReport" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
-	<import value="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
-	<style name="Sans_Normal" isDefault="true" fontName="DejaVu Sans" fontSize="12"/>
-	<style name="Sans_Normal_Small" isDefault="false" fontName="DejaVu Sans" fontSize="9"/>
-	<style name="Sans_Bold" isDefault="false" fontName="DejaVu Sans" fontSize="12" isBold="true"/>
-	<style name="Sans_Italic" isDefault="false" fontName="DejaVu Sans" fontSize="12" isItalic="true"/>
+<jasperReport name="AddressesReport" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="16a50998-d3bd-4f4d-aa18-f9b2ed453f51">
+	<import>net.sf.jasperreports.engine.data.JRBeanCollectionDataSource</import>
+	<style name="Sans_Normal" default="true" fontName="DejaVu Sans" fontSize="12.0"/>
+	<style name="Sans_Normal_Small" fontName="DejaVu Sans" fontSize="9.0"/>
+	<style name="Sans_Bold" fontName="DejaVu Sans" fontSize="12.0" bold="true"/>
+	<style name="Sans_Italic" fontName="DejaVu Sans" fontSize="12.0" italic="true"/>
 	<parameter name="ReportTitle" class="java.lang.String"/>
 	<parameter name="CityFilter" class="java.util.List"/>
-	<queryString language="hql">
-		<![CDATA[select address as address, document.id as documentId, document.total as documentTotal
+	<query language="hql"><![CDATA[select address as address, document.id as documentId, document.total as documentTotal
 			from Address as address join address.documents as document
 			where city not in ($P{CityFilter})
-			order by address.city, address.lastName, address.firstName, address.id]]>
-	</queryString>
+			order by address.city, address.lastName, address.firstName, address.id]]></query>
 	<field name="id" class="java.lang.Long">
-		<fieldDescription><![CDATA[address.id]]></fieldDescription>
+		<description><![CDATA[address.id]]></description>
 	</field>
 	<field name="firstName" class="java.lang.String">
-		<fieldDescription><![CDATA[address.firstName]]></fieldDescription>
+		<description><![CDATA[address.firstName]]></description>
 	</field>
 	<field name="lastName" class="java.lang.String">
-		<fieldDescription><![CDATA[address.lastName]]></fieldDescription>
+		<description><![CDATA[address.lastName]]></description>
 	</field>
 	<field name="street" class="java.lang.String">
-		<fieldDescription><![CDATA[address.street]]></fieldDescription>
+		<description><![CDATA[address.street]]></description>
 	</field>
 	<field name="city" class="java.lang.String">
-		<fieldDescription><![CDATA[address.city]]></fieldDescription>
+		<description><![CDATA[address.city]]></description>
 	</field>
 	<field name="documentId" class="java.lang.Long"/>
 	<field name="documentTotal" class="java.lang.Double"/>
-	<variable name="addressTotal" class="java.lang.Double" resetType="Group" resetGroup="AddressGroup" calculation="Sum">
-		<variableExpression><![CDATA[$F{documentTotal}]]></variableExpression>
+	<variable name="addressTotal" resetType="Group" calculation="Sum" resetGroup="AddressGroup" class="java.lang.Double">
+		<expression><![CDATA[$F{documentTotal}]]></expression>
 	</variable>
 	<group name="AddressGroup">
-		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<expression><![CDATA[$F{id}]]></expression>
 		<groupHeader>
 			<band height="25">
-				<frame>
-					<reportElement mode="Opaque" x="0" y="0" width="375" height="21" backcolor="#E0E0E0"/>
-					<textField textAdjust="StretchHeight">
-						<reportElement x="5" y="3" width="160" height="15"/>
-						<textElement/>
-						<textFieldExpression class="java.lang.String"><![CDATA[$F{firstName} + " " + $F{lastName} + " (ID: " + $F{id} + ")"]]></textFieldExpression>
-					</textField>
-					<textField textAdjust="StretchHeight">
-						<reportElement x="210" y="3" width="160" height="15"/>
-						<textElement textAlignment="Right"/>
-						<textFieldExpression class="java.lang.String"><![CDATA[$F{street} + "," + $F{city}]]></textFieldExpression>
-					</textField>
-				</frame>
+				<element kind="frame" uuid="5f42d8d7-e8b3-4896-8221-8cf52e3961db" mode="Opaque" x="0" y="0" width="375" height="21" backcolor="#E0E0E0">
+					<element kind="textField" uuid="bd2cc1e8-c5fe-4442-b296-aed1f8d796c1" x="5" y="3" width="160" height="15" textAdjust="StretchHeight">
+						<expression><![CDATA[$F{firstName} + " " + $F{lastName} + " (ID: " + $F{id} + ")"]]></expression>
+					</element>
+					<element kind="textField" uuid="8300296e-0d93-4fa5-9220-120cce6c76bf" x="210" y="3" width="160" height="15" textAdjust="StretchHeight" hTextAlign="Right">
+						<expression><![CDATA[$F{street} + "," + $F{city}]]></expression>
+					</element>
+				</element>
 			</band>
 		</groupHeader>
 		<groupFooter>
 			<band height="25">
-				<line>
-					<reportElement x="20" y="0" width="475" height="1" forecolor="#808080"/>
-					<graphicElement>
-						<pen lineWidth="0.5"/>
-					</graphicElement>
-				</line>
-				<staticText>
-					<reportElement style="Sans_Normal_Small" x="20" y="2" width="70" height="15"/>
-					<textElement/>
+				<element kind="line" uuid="8a21d382-6f2d-4afa-8413-ce32c01f1cb2" x="20" y="0" width="475" height="1" forecolor="#808080">
+					<pen lineWidth="0.5"/>
+				</element>
+				<element kind="staticText" uuid="86de3345-2f7c-4b84-8b55-00d93e0f80ad" x="20" y="2" width="70" height="15" style="Sans_Normal_Small">
 					<text><![CDATA[Total]]></text>
-				</staticText>
-				<textField>
-					<reportElement style="Sans_Normal_Small" x="100" y="2" width="50" height="15"/>
-					<textElement textAlignment="Right"/>
-					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{AddressGroup_COUNT}]]></textFieldExpression>
-				</textField>
-				<textField textAdjust="StretchHeight" pattern="#.00">
-					<reportElement style="Sans_Normal_Small" x="255" y="2" width="100" height="15"/>
-					<textElement textAlignment="Right"/>
-					<textFieldExpression class="java.lang.Double"><![CDATA[$V{addressTotal}]]></textFieldExpression>
-				</textField>
+				</element>
+				<element kind="textField" uuid="b8e96784-15ab-44cc-8515-d3867eee44f3" x="100" y="2" width="50" height="15" hTextAlign="Right" style="Sans_Normal_Small">
+					<expression><![CDATA[$V{AddressGroup_COUNT}]]></expression>
+				</element>
+				<element kind="textField" uuid="8968deb8-0f66-4452-a827-45298753e329" x="255" y="2" width="100" height="15" textAdjust="StretchHeight" pattern="#.00" hTextAlign="Right" style="Sans_Normal_Small">
+					<expression><![CDATA[$V{addressTotal}]]></expression>
+				</element>
 			</band>
 		</groupFooter>
 	</group>
-	<title>
-		<band height="50">
-			<line>
-				<reportElement x="0" y="0" width="515" height="1" forecolor="#000000"/>
-			</line>
-			<textField isBlankWhenNull="true">
-				<reportElement style="Sans_Normal" x="0" y="10" width="515" height="30"/>
-				<textElement textAlignment="Center">
-					<font size="22"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{ReportTitle}]]></textFieldExpression>
-			</textField>
-		</band>
+	<title height="50">
+		<element kind="line" uuid="88826bcd-0558-4c6a-b145-8ae2b069600e" x="0" y="0" width="515" height="1" forecolor="#000000"/>
+		<element kind="textField" uuid="460c4c97-fe76-48ed-95a7-948eddc87252" x="0" y="10" width="515" height="30" fontSize="22.0" blankWhenNull="true" hTextAlign="Center" style="Sans_Normal">
+			<paragraph lineSpacing="Single" style="Sans_Normal"/>
+			<expression><![CDATA[$P{ReportTitle}]]></expression>
+		</element>
 	</title>
 	<detail>
 		<band height="13">
-			<staticText>
-				<reportElement style="Sans_Normal_Small" isPrintRepeatedValues="false" x="20" y="0" width="70" height="12" isPrintInFirstWholeBand="true" printWhenGroupChanges="AddressGroup"/>
-				<textElement/>
+			<element kind="staticText" uuid="2cbb3032-23e2-4632-93c5-43ca84e3e9fc" x="20" y="0" width="70" height="12" printWhenGroupChanges="AddressGroup" printRepeatedValues="false" printInFirstWholeBand="true" style="Sans_Normal_Small">
 				<text><![CDATA[Document ID]]></text>
-			</staticText>
-			<textField>
-				<reportElement style="Sans_Normal_Small" x="100" y="0" width="50" height="12"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{documentId}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="Sans_Normal_Small" isPrintRepeatedValues="false" x="180" y="0" width="70" height="12" isPrintInFirstWholeBand="true" printWhenGroupChanges="AddressGroup"/>
-				<textElement/>
+			</element>
+			<element kind="textField" uuid="d6c68037-0c77-4b9e-a224-fcb02be5a6e2" x="100" y="0" width="50" height="12" hTextAlign="Right" style="Sans_Normal_Small">
+				<expression><![CDATA[$F{documentId}]]></expression>
+			</element>
+			<element kind="staticText" uuid="7833197d-7779-4ebf-9a67-a96d3ea0caf7" x="180" y="0" width="70" height="12" printWhenGroupChanges="AddressGroup" printRepeatedValues="false" printInFirstWholeBand="true" style="Sans_Normal_Small">
 				<text><![CDATA[Document Total]]></text>
-			</staticText>
-			<textField textAdjust="StretchHeight" pattern="#.00">
-				<reportElement style="Sans_Normal_Small" x="255" y="0" width="100" height="12"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{documentTotal}]]></textFieldExpression>
-			</textField>
+			</element>
+			<element kind="textField" uuid="2da9c5a4-aac5-4c78-a25c-6fe9c1a2342f" x="255" y="0" width="100" height="12" textAdjust="StretchHeight" pattern="#.00" hTextAlign="Right" style="Sans_Normal_Small">
+				<expression><![CDATA[$F{documentTotal}]]></expression>
+			</element>
 		</band>
 	</detail>
-	<pageFooter>
-		<band height="40">
-			<printWhenExpression><![CDATA[$P{IS_IGNORE_PAGINATION}.booleanValue()?Boolean.FALSE:Boolean.TRUE]]></printWhenExpression>
-			<line>
-				<reportElement x="0" y="10" width="515" height="1"/>
-			</line>
-			<textField>
-				<reportElement x="200" y="20" width="80" height="15"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER}) + " of"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="280" y="20" width="75" height="15"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
-			</textField>
-		</band>
+	<pageFooter height="40">
+		<printWhenExpression><![CDATA[$P{IS_IGNORE_PAGINATION}.booleanValue()?Boolean.FALSE:Boolean.TRUE]]></printWhenExpression>
+		<element kind="line" uuid="e329ddb0-0e4a-4e97-b807-3d9d81859d3a" x="0" y="10" width="515" height="1"/>
+		<element kind="textField" uuid="a06093ba-c54e-4dd1-908b-fde1c5222915" x="200" y="20" width="80" height="15" hTextAlign="Right">
+			<expression><![CDATA["Page " + String.valueOf($V{PAGE_NUMBER}) + " of"]]></expression>
+		</element>
+		<element kind="textField" uuid="a660b63d-86cc-4013-aa3f-7c2fd8165606" x="280" y="20" width="75" height="15" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA[" " + String.valueOf($V{PAGE_NUMBER})]]></expression>
+		</element>
 	</pageFooter>
 </jasperReport>

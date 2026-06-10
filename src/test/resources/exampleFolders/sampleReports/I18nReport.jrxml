@@ -1,61 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="I18nReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" resourceBundle="i18n">
+<jasperReport name="I18nReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" resourceBundle="i18n" uuid="b4619d6f-11c2-479d-9d64-39d9f50a8d57">
 	<parameter name="number" class="java.lang.Double"/>
-	<title>
-		<band height="552">
-			<image scaleImage="Clip">
-				<reportElement positionType="Float" x="20" y="20" width="100" height="50"/>
-				<imageExpression class="java.lang.String"><![CDATA[$R{image.flag}]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement positionType="Float" x="150" y="20" width="400" height="50"/>
-				<textElement>
-					<font size="24"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{REPORT_LOCALE}.getDisplayName($P{REPORT_LOCALE})]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="100" width="530" height="20"/>
-				<textElement textAlignment="Justified">
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$R{text.paragraph1}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="125" width="530" height="20"/>
-				<textElement textAlignment="Justified">
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$R{text.paragraph2}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="150" width="530" height="20"/>
-				<textElement textAlignment="Justified">
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$R{text.paragraph3}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="210" width="530" height="20" forecolor="#FF0000"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[msg($R{text.message}, $P{number})]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" pattern="full,short" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="175" width="530" height="28" forecolor="#0000FF"/>
-				<textElement>
-					<font size="18" isItalic="true" pdfFontName="Helvetica-Oblique"/>
-				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="20" y="235" width="530" height="15"/>
-				<textElement textAlignment="Right">
-					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$R{text.contributors}]]></textFieldExpression>
-			</textField>
-		</band>
+	<title height="552">
+		<element kind="image" uuid="52ad26b0-194e-4e7d-8b69-0504d7e6ba96" positionType="Float" x="20" y="20" width="100" height="50" scaleImage="Clip">
+			<expression><![CDATA[$R{image.flag}]]></expression>
+		</element>
+		<element kind="textField" uuid="5ad1b722-d2c9-4520-992f-bcf5fd942e9a" positionType="Float" x="150" y="20" width="400" height="50" fontSize="24.0">
+			<expression><![CDATA[$P{REPORT_LOCALE}.getDisplayName($P{REPORT_LOCALE})]]></expression>
+		</element>
+		<element kind="textField" uuid="391660a0-aa77-4d43-b565-00bb8fcc3866" positionType="Float" x="20" y="100" width="530" height="20" fontSize="14.0" textAdjust="StretchHeight" blankWhenNull="true" hTextAlign="Justified">
+			<expression><![CDATA[$R{text.paragraph1}]]></expression>
+		</element>
+		<element kind="textField" uuid="fe4a0229-7123-4c63-84bd-6a30bfa67441" positionType="Float" x="20" y="125" width="530" height="20" fontSize="14.0" textAdjust="StretchHeight" blankWhenNull="true" hTextAlign="Justified">
+			<expression><![CDATA[$R{text.paragraph2}]]></expression>
+		</element>
+		<element kind="textField" uuid="5d9f3c32-00ff-49b8-bf6a-d889949b9628" positionType="Float" x="20" y="150" width="530" height="20" fontSize="14.0" textAdjust="StretchHeight" blankWhenNull="true" hTextAlign="Justified">
+			<expression><![CDATA[$R{text.paragraph3}]]></expression>
+		</element>
+		<element kind="textField" uuid="432a18b1-aed9-4912-b1ab-129255cd6aab" positionType="Float" x="20" y="210" width="530" height="20" forecolor="#FF0000" fontSize="14.0" textAdjust="StretchHeight" blankWhenNull="true">
+			<expression><![CDATA[msg($R{text.message}, $P{number})]]></expression>
+		</element>
+		<element kind="textField" uuid="963c207d-332e-41fe-ae24-e222cdf34c17" positionType="Float" x="20" y="175" width="530" height="28" forecolor="#0000FF" fontSize="18.0" pdfFontName="Helvetica-Oblique" textAdjust="StretchHeight" pattern="full,short" blankWhenNull="true" italic="true">
+			<expression><![CDATA[new Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="36bb2269-bba5-4aa1-ac3d-9c5fa54fd2db" positionType="Float" x="20" y="235" width="530" height="15" fontSize="10.0" pdfFontName="Helvetica-Oblique" textAdjust="StretchHeight" blankWhenNull="true" italic="true" hTextAlign="Right">
+			<expression><![CDATA[$R{text.contributors}]]></expression>
+		</element>
 	</title>
 </jasperReport>

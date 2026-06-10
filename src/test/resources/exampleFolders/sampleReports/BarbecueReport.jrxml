@@ -1,59 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BarbecueReport" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
+<jasperReport name="BarbecueReport" language="java" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="3771e3b7-0af3-4f79-9b9b-9ff58bc187b7">
 	<parameter name="Code" class="java.lang.String">
 		<defaultValueExpression><![CDATA["01234567890"]]></defaultValueExpression>
 	</parameter>
-	<title>
-		<band height="742">
-			<line>
-				<reportElement x="0" y="0" width="515" height="1"/>
-			</line>
-			<staticText>
-				<reportElement x="0" y="10" width="515" height="30"/>
-				<textElement textAlignment="Center">
-					<font size="22"/>
-				</textElement>
-				<text><![CDATA[Barcode Sample]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="50" width="515" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["This sample uses Barbecue Version 1.5beta1\n" + ""]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="Reference">
-				<reportElement x="0" y="70" width="515" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["http://barbecue.sourceforge.net/"]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA["http://barbecue.sourceforge.net/"]]></hyperlinkReferenceExpression>
-			</textField>
-			<componentElement>
-				<reportElement x="0" y="100" width="400" height="50"/>
-				<c:barbecue xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
-					<c:codeExpression><![CDATA["JasperReports"]]></c:codeExpression>
-				</c:barbecue>
-			</componentElement>
-			<componentElement>
-				<reportElement x="0" y="160" width="400" height="50"/>
-				<c:barbecue xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Codabar" drawText="true" checksumRequired="false">
-					<c:codeExpression><![CDATA[$P{Code}]]></c:codeExpression>
-				</c:barbecue>
-			</componentElement>
-			<componentElement>
-				<reportElement x="0" y="220" width="400" height="50"/>
-				<c:barbecue xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Int2of5" drawText="true" checksumRequired="true" barWidth="3" barHeight="20">
-					<c:codeExpression><![CDATA[$P{Code}]]></c:codeExpression>
-				</c:barbecue>
-			</componentElement>
-			<componentElement>
-				<reportElement x="0" y="280" width="400" height="50"/>
-				<c:barbecue xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Std2of5" drawText="false" checksumRequired="false">
-					<c:codeExpression><![CDATA[$P{Code}]]></c:codeExpression>
-				</c:barbecue>
-			</componentElement>
-		</band>
+	<title height="742">
+		<element kind="line" uuid="87e3d95d-c151-47f6-9fb2-a38d099e7321" x="0" y="0" width="515" height="1"/>
+		<element kind="staticText" uuid="c0413351-b9ab-4f2a-8d25-3b3bad074b40" x="0" y="10" width="515" height="30" fontSize="22.0" hTextAlign="Center">
+			<text><![CDATA[Barcode Sample]]></text>
+		</element>
+		<element kind="textField" uuid="bc36d3e5-4848-47a6-8205-a92db908932d" x="0" y="50" width="515" height="20" fontSize="12.0" hTextAlign="Center">
+			<expression><![CDATA["This sample uses Barbecue Version 1.5beta1\n" + ""]]></expression>
+		</element>
+		<element kind="textField" uuid="fcc6e356-dfd7-4265-8b79-ad922a4c9b1a" x="0" y="70" width="515" height="20" fontSize="12.0" linkType="Reference" hTextAlign="Center">
+			<expression><![CDATA["http://barbecue.sourceforge.net/"]]></expression>
+			<hyperlinkReferenceExpression><![CDATA["http://barbecue.sourceforge.net/"]]></hyperlinkReferenceExpression>
+		</element>
+		<element kind="component" uuid="a41a74b8-43e3-45a8-8651-bd6b31ac2aad" x="0" y="100" width="400" height="50">
+			<component kind="barbecue" type="Code128" drawText="true" checksumRequired="false">
+				<codeExpression><![CDATA["JasperReports"]]></codeExpression>
+			</component>
+		</element>
+		<element kind="component" uuid="fbf15603-7566-4e28-b15b-595558a1d1a5" x="0" y="160" width="400" height="50">
+			<component kind="barbecue" type="Codabar" drawText="true" checksumRequired="false">
+				<codeExpression><![CDATA[$P{Code}]]></codeExpression>
+			</component>
+		</element>
+		<element kind="component" uuid="05df802c-cecb-41ff-b2f8-a32573df1859" x="0" y="220" width="400" height="50">
+			<component kind="barbecue" type="Int2of5" drawText="true" checksumRequired="true" barWidth="3" barHeight="20">
+				<codeExpression><![CDATA[$P{Code}]]></codeExpression>
+			</component>
+		</element>
+		<element kind="component" uuid="34631aa2-63e8-4777-857d-8ade9f814786" x="0" y="280" width="400" height="50">
+			<component kind="barbecue" type="Std2of5" drawText="false" checksumRequired="false">
+				<codeExpression><![CDATA[$P{Code}]]></codeExpression>
+			</component>
+		</element>
 	</title>
 </jasperReport>

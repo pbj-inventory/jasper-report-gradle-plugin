@@ -1,61 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocumentsReport" pageWidth="500" pageHeight="842" columnWidth="500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-	<style name="Sans_Normal" isDefault="true" fontName="DejaVu Sans" fontSize="10"/>
-	<style name="Sans_Bold" isDefault="false" fontName="DejaVu Sans" fontSize="10" isBold="true"/>
-	<style name="Sans_Italic" isDefault="false" fontName="DejaVu Sans" fontSize="10" isItalic="true"/>
+<jasperReport name="DocumentsReport" language="java" pageWidth="500" pageHeight="842" columnWidth="500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6a591f42-8b3c-4c5a-b2fc-c8590f9b9d68">
+	<style name="Sans_Normal" default="true" fontName="DejaVu Sans" fontSize="10.0"/>
+	<style name="Sans_Bold" fontName="DejaVu Sans" fontSize="10.0" bold="true"/>
+	<style name="Sans_Italic" fontName="DejaVu Sans" fontSize="10.0" italic="true"/>
 	<field name="id" class="java.lang.Long"/>
 	<field name="total" class="java.lang.Double"/>
-	<title>
-		<band height="1">
-			<line>
-				<reportElement x="0" y="0" width="195" height="1" forecolor="#808080"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-		</band>
+	<title height="1">
+		<element kind="line" uuid="82fa97b0-d7ea-4cb6-834d-cad1a1c7f4b2" x="0" y="0" width="195" height="1" forecolor="#808080">
+			<pen lineWidth="0.5"/>
+		</element>
 	</title>
-	<pageHeader>
-		<band height="15">
-			<staticText>
-				<reportElement style="Sans_Bold" x="10" y="1" width="55" height="13"/>
-				<textElement/>
-				<text><![CDATA[Documents]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Sans_Bold" x="65" y="1" width="15" height="13"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Sans_Bold" x="85" y="1" width="100" height="13"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[Total]]></text>
-			</staticText>
-		</band>
+	<pageHeader height="15">
+		<element kind="staticText" uuid="5269bee5-dd6e-47ed-9ef4-6ee808c1830c" x="10" y="1" width="55" height="13" style="Sans_Bold">
+			<text><![CDATA[Documents]]></text>
+		</element>
+		<element kind="staticText" uuid="12ded504-268e-48fb-a142-fe6ae0b32e8b" x="65" y="1" width="15" height="13" hTextAlign="Right" style="Sans_Bold">
+			<text><![CDATA[ID]]></text>
+		</element>
+		<element kind="staticText" uuid="c35b0ec5-ea5e-46d6-b203-b4ad26d4a31c" x="85" y="1" width="100" height="13" hTextAlign="Right" style="Sans_Bold">
+			<text><![CDATA[Total]]></text>
+		</element>
 	</pageHeader>
 	<detail>
 		<band height="14">
-			<textField>
-				<reportElement x="10" y="0" width="70" height="13"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" pattern="#.00">
-				<reportElement positionType="Float" x="85" y="0" width="100" height="13"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
+			<element kind="textField" uuid="1b3b9001-bb84-4de5-b30a-e79e2e5212c9" x="10" y="0" width="70" height="13" hTextAlign="Right">
+				<expression><![CDATA[$F{id}]]></expression>
+			</element>
+			<element kind="textField" uuid="31665155-b5a9-4c86-8ec3-10df097fbb6b" positionType="Float" x="85" y="0" width="100" height="13" textAdjust="StretchHeight" pattern="#.00" hTextAlign="Right">
+				<expression><![CDATA[$F{total}]]></expression>
+			</element>
 		</band>
 	</detail>
-	<summary>
-		<band height="1">
-			<line>
-				<reportElement x="0" y="0" width="195" height="1" forecolor="#808080"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-		</band>
+	<summary height="1">
+		<element kind="line" uuid="491dc22a-6f71-47fe-8c53-63f8c4a19039" x="0" y="0" width="195" height="1" forecolor="#808080">
+			<pen lineWidth="0.5"/>
+		</element>
 	</summary>
 </jasperReport>
